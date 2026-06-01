@@ -1,7 +1,7 @@
 # =============================================================================
 # docker-compose.yml
-# Orchestrates the backend API and PostgreSQL database.
-# NOTE: The frontend service is deferred to Phase 9.
+# Orchestrates three services: db (PostgreSQL), backend (FastAPI), frontend (nginx)
+# Phase 9: all three services fully wired together.
 # =============================================================================
 
 services:
@@ -38,6 +38,19 @@ services:
     # Run Alembic migrations first, then start Uvicorn
     command: >
       sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  # ── React + nginx frontend ───────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # VITE_API_BASE_URL is baked into the bundle at build time.
+        # In production, set this to your deployed backend URL.
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
 
 # ── Named volumes ─────────────────────────────────────────────────────────────
 volumes:

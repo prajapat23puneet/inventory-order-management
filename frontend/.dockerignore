@@ -1,0 +1,19 @@
+# frontend/.dockerignore
+# Exclude directories and files that should NOT be copied into the Docker build context.
+
+# Node modules — installed fresh by `npm ci` inside the container
+node_modules/
+
+# Build output — rebuilt inside the container
+dist/
+
+# Local environment file — VITE_API_BASE_URL is passed as a build ARG instead
+.env
+.env.local
+.env.*.local
+
+# Editor & OS noise
+.DS_Store
+*.log
+.vscode/
+.idea/
