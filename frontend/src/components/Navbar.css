@@ -1,0 +1,119 @@
+/* frontend/src/components/Navbar.css */
+
+/* ── Variables ────────────────────────────────────────────────────── */
+:root {
+  --nav-bg: #0f172a;
+  --nav-border: #1e293b;
+  --nav-text: #94a3b8;
+  --nav-text-hover: #f1f5f9;
+  --nav-active: #6366f1;
+  --nav-active-bg: rgba(99, 102, 241, 0.12);
+  --nav-brand: #f1f5f9;
+  --nav-height: 64px;
+}
+
+/* ── Shell ────────────────────────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(8px);
+}
+
+.navbar__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: var(--nav-height);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* ── Brand ────────────────────────────────────────────────────────── */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--nav-brand);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  transition: opacity 0.2s;
+}
+.navbar__brand:hover { opacity: 0.85; }
+.navbar__brand-icon { font-size: 1.4rem; }
+
+/* ── Desktop links ────────────────────────────────────────────────── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--nav-text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s, background 0.2s;
+}
+.navbar__link:hover {
+  color: var(--nav-text-hover);
+  background: rgba(255,255,255,0.06);
+}
+.navbar__link--active {
+  color: var(--nav-active) !important;
+  background: var(--nav-active-bg);
+}
+
+/* ── Hamburger ────────────────────────────────────────────────────── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navbar__hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--nav-text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+/* ── Mobile menu ──────────────────────────────────────────────────── */
+.navbar__mobile-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 1px solid var(--nav-border);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .navbar__links { display: none; }
+  .navbar__hamburger { display: flex; }
+}

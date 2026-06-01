@@ -1,0 +1,24 @@
+/* frontend/src/components/ErrorMessage.css */
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeIn 0.2s ease;
+}
+
+.error-message__icon { font-size: 1rem; flex-shrink: 0; }
+.error-message__text { line-height: 1.4; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
